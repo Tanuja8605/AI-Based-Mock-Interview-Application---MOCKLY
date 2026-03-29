@@ -1,0 +1,15 @@
+body {
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(to right, #1e293b, #0f172a);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.login-card {
+  border-radius: 20px;
+  width: 100%;
+  max-width: 400px;
+  padding: 30px;
+  background: white;
+}

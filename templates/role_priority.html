@@ -1,0 +1,49 @@
+{% extends 'base_without_navbar.html' %}
+
+{% block body %}
+<style>
+.title{
+    text-align:center;
+    margin-bottom:20px;
+    font-weight:bold;
+}
+</style>
+
+
+<div class="container">
+
+<h2 class="title">Role Priority Report</h2>
+
+<table class="table table-bordered table-striped">
+
+<thead>
+<tr>
+<th>Rank</th>
+<th>Interview Type</th>
+<th>Total Interviews</th>
+</tr>
+</thead>
+
+<tbody>
+
+{% for row in data %}
+
+<tr>
+<td>{{ loop.index }}</td>
+<td>{{ row.interview_type }}</td>
+<td>{{ row.total }}</td>
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+<button onclick="printReport()" class="btn btn-primary">
+🖨️ Download / Print Report
+</button>
+
+
+</div>
+
+{% endblock %}

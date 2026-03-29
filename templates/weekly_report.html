@@ -1,0 +1,47 @@
+{% extends 'base_without_navbar.html' %}
+
+{% block body %}
+<style>
+.title{
+    text-align:center;
+    margin-bottom:20px;
+    font-weight:bold;
+}
+</style>
+
+
+<div class="container">
+
+<h2 class="title">Weekly Report</h2>
+
+<table class="table table-bordered table-striped">
+
+<tr>
+<th>Total Interviews This Week</th>
+<td>{{ total_week }}</td>
+</tr>
+
+<tr>
+<th>Completed Interviews</th>
+<td>{{ completed_week }}</td>
+</tr>
+
+<tr>
+<th>Not Completed Interviews</th>
+<td>{{ not_completed_week }}</td>
+</tr>
+
+<tr>
+<th>Average Score</th>
+<td>{{ avg_score }}</td>
+</tr>
+
+</table>
+<button onclick="printReport()" class="btn btn-primary">
+🖨️ Download / Print Report
+</button>
+
+
+</div>
+
+{% endblock %}

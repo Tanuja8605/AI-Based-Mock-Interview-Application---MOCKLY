@@ -1,0 +1,52 @@
+{% extends 'base_without_navbar.html' %}
+
+{% block body %}
+<style>
+.title{
+    text-align:center;
+    margin-bottom:20px;
+    font-weight:bold;
+}
+</style>
+
+<div class="container">
+
+<h2 class="title">Answer Quality Report</h2>
+
+<table class="table table-bordered table-striped">
+
+<thead>
+<tr>
+<th>Quality</th>
+<th>Total Interviews</th>
+</tr>
+</thead>
+
+<tbody>
+
+{% for row in data %}
+
+<tr>
+<td>{{ row[0] }}</td>
+<td>{{ row[1] }}</td>
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+<button onclick="printReport()" class="btn btn-primary">
+🖨️ Download / Print Report
+</button>
+
+
+</div>
+
+<script>
+function printReport() {
+    window.print();
+}
+</script>
+
+{% endblock %}

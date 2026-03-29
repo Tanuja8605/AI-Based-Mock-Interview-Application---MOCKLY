@@ -1,0 +1,34 @@
+{% extends 'base_with_login.html' %} {% block title %} Home {% endblock title %}
+{% block body %}
+<!-- Dashboard Content -->
+<div class="dashboard-container">
+  <h3 class="section-title mt-5">Past Interviews</h3>
+
+  <div class="row g-4">
+    {% for interview in past_interviews %}
+
+    <div class="col-md-6">
+      <div class="card p-3 shadow">
+        <h5>{{ interview.role }}</h5>
+
+        <p>Date : {{ interview.date }} </p>
+        <p>Time : {{ interview.time }}</p>
+
+        <p>Type: {{ interview.interview_type }}</p>
+
+        <p>Score : {{ interview.score }}/100</p>
+
+        <p>Status : {{ interview.status }}</p>
+
+
+      </div>
+    </div>
+
+    {% endfor %}
+  </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+{% endblock body %}

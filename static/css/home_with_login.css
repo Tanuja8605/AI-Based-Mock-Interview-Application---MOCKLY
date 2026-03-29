@@ -1,0 +1,19 @@
+body {
+  font-family: "Poppins", sans-serif;
+  background: #0f172a;
+  color: white;
+}
+.hero {
+  background: linear-gradient(to right, #1e293b, #0f172a);
+  color: white;
+  padding: 100px 0;
+}
+.hero h1 span {
+  color: #22c55e;
+}
+.card {
+  border-radius: 15px;
+}
+.modal-content {
+  border-radius: 20px;
+}

@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>AI Mock Interview Platform</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Google Font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='CSS/home_with_login.css') }}"
+    />
+
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/dashboard.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/edit_profile.css') }}"
+    />
+  </head>
+
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand fw-bold" href="#">Mockly</a>
+
+        <button
+          class="navbar-toggler"
+          data-bs-toggle="collapse"
+          data-bs-target="#menu"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="menu">
+          <ul class="navbar-nav ms-auto align-items-center">
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('schedule_page') }}">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('upcoming_interview') }}"
+                >Interview</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('dashboard') }}"
+                >Dashboard</a
+              >
+            </li>
+
+            <!-- Profile Button -->
+            <li class="nav-item ms-3">
+              <a
+                class="nav-link"
+                href="#"
+                data-bs-toggle="modal"
+                data-bs-target="#profileModal"
+              >
+                Profile
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link text-danger" href="{{ url_for('logout') }}"
+                >Logout</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    {% block body %}{% endblock body %}
+
+    <!-- 🔹 PROFILE MODAL (Navbar chya baher) -->
+    <div class="modal fade" id="profileModal" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content p-4 text-center">
+          <div class="modal-header border-0">
+            <h5 class="modal-title fw-bold">My Profile</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+
+          <div class="modal-body">
+            <img
+              src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
+              class="rounded-circle mb-3"
+              width="120"
+              height="120"
+            />
+
+            <h5 class="text-black">{{ session.get('user_name') }}</h5>
+            <p class="mb-1 text-black">
+              <strong>{{ session.get('user_email') }}</strong>
+            </p>
+
+            <a href="{{ url_for('logout') }}">
+              <button class="btn btn-outline-success mt-3">Logout</button>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      function openProfile() {
+        var profileModal = new bootstrap.Modal(
+          document.getElementById("profileModal"),
+        );
+        profileModal.show();
+      }
+    </script>
+    <!-- Bootstrap JS (VERY IMPORTANT) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <footer class="bg-dark text-white text-center py-3">
+      © 2026 AI Mock Interview Platform | Student Project
+    </footer>
+  </body>
+</html>

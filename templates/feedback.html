@@ -1,0 +1,28 @@
+{% extends 'base_without_navbar.html' %}
+
+{% block title %}Interview Feedback{% endblock title %}
+
+{% block body %}
+
+<div class="feedback-container">
+
+  <h2 class="mb-4 text-center">Interview Feedback</h2>
+
+  <div class="feedback-item">
+      <h5>Score</h5>
+      <p style="font-size:30px;color:green;">
+          {{ interview.score }} / 100
+      </p>
+  </div>
+
+  <div class="text-center mt-4">
+      <a href="{{ url_for('schedule_page') }}">
+          <button class="btn btn-success btn-lg">
+              Go to Home
+          </button>
+      </a>
+  </div>
+
+</div>
+
+{% endblock body %}

@@ -1,0 +1,158 @@
+{% extends 'base_without_navbar.html' %}
+
+{% block title %}AI Interview{% endblock title %}
+
+{% block body %}
+<div class="interview-wrapper">
+  <div class="avatars-container">
+    <div class="ai-section">
+      <img class="ai-avatar"
+        src="https://cdn-icons-png.flaticon.com/512/9187/9187604.png"
+        alt="AI Avatar"/>
+      <h4>AI Interviewer</h4>
+    </div>
+
+    <div class="user-section">
+      <img class="ai-avatar"
+        src="https://cdn-icons-png.flaticon.com/512/9187/9187604.png"
+        alt="User"/>
+      <h4>User</h4>
+    </div>
+  </div>
+
+  <div class="controls-container">
+    <button class="control-btn mic-btn" id="micBtn">
+      <i class="fas fa-microphone"></i>
+    </button>
+
+    <form action="/end_interview_manual/{{interview.id}}" method="POST">
+    <button class="control-btn end-btn">
+        <i class="fas fa-phone-slash"></i>
+    </button>
+</form>
+  </div>
+
+</div>
+
+<script>
+
+let stream;
+let micOn = true; /*variable for accessing mic on/off */
+
+/* Proper Flask variable injection */
+const interviewId = '{{ interview.id | tojson }}'; /*it passes data to frontend from backend*/
+const message = '{{ ai_message | tojson }}';/*it passes data to frontend from backend*/
+
+/* Start mic */
+async function startMic(){
+    try{
+        stream = await navigator.mediaDevices.getUserMedia({ audio:true });
+    }catch(err){
+        alert("Microphone access denied");
+    }
+}
+startMic();
+
+/* Mic toggle */
+document.getElementById("micBtn").onclick = () => {
+
+    micOn = !micOn;
+
+    if(stream && stream.getAudioTracks().length){
+        stream.getAudioTracks()[0].enabled = micOn;
+    }
+
+    document.getElementById("micBtn").innerHTML = micOn
+        ? '<i class="fas fa-microphone"></i>'
+        : '<i class="fas fa-microphone-slash"></i>';
+};
+
+
+/* AI welcome speech */
+window.onload = function(){
+    const utter = new SpeechSynthesisUtterance(message);
+
+    window.speechSynthesis.speak(utter);
+
+    utter.onend = () => {
+    setTimeout(() => {
+        startUserRecognition();
+    }, 1500);
+}
+};
+
+/* Speech recognition */
+let silenceTimer;
+let fullTranscript = "";
+
+function startUserRecognition(){
+
+    if(!('webkitSpeechRecognition' in window)){
+        alert("Speech recognition not supported");
+        return;
+    }
+
+    const recognition = new webkitSpeechRecognition();
+    recognition.continuous = true;
+    recognition.interimResults = true;
+
+    recognition.onresult = function(event){
+
+        fullTranscript = "";
+
+        for(let i=event.resultIndex;i<event.results.length;i++){
+            fullTranscript += event.results[i][0].transcript;
+        }
+
+        console.log("Listening:", fullTranscript);
+
+        clearTimeout(silenceTimer);
+
+        silenceTimer = setTimeout(async ()=>{
+
+            recognition.stop();
+
+            console.log("Final Answer:", fullTranscript);
+
+            await askNextQuestion(fullTranscript);
+
+        },4000);
+    };
+
+    recognition.start();
+}
+
+/* Ask next question */
+async function askNextQuestion(userSpeech){
+
+    const response = await fetch(`/interview_question/${interviewId}`,{
+        method:'POST',
+        headers:{
+            'Content-Type':'application/json'
+        },
+        body: JSON.stringify({
+            user_answer: userSpeech
+        })
+    });
+
+    const data = await response.json();
+
+    if(data.question && data.question !== "All questions completed!"){
+
+        const utter = new SpeechSynthesisUtterance(data.question);
+        speechSynthesis.speak(utter);
+
+        utter.onend = () => {
+            fullTranscript = "";
+            startUserRecognition();
+        }
+
+    }else{
+        alert("Interview Finished!");
+        window.location.href="/feedback";
+    }
+} 
+
+</script>
+
+{% endblock body %}

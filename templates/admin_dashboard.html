@@ -1,0 +1,107 @@
+{% extends 'base_without_navbar.html' %} {% block title %} Admin Reports {%
+endblock %} {% block body %}
+<style>
+    /* Container */
+.container {
+    width: 90%;
+    margin: auto;
+    margin-top: 40px;
+    text-align: center;}
+
+/* Title */
+.title {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    color: #ffffff;
+}
+
+/* Card Grid Layout */
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+/* Card Design */
+.card {
+    background: linear-gradient(135deg, #ece44e, #40f36f);
+    padding: 35px;
+    border-radius: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0px 6px 15px rgba(0,0,0,0.15);
+}
+
+/* Hover Effect */
+.card:hover {
+    transform: translateY(-8px) scale(1.05);
+    box-shadow: 0px 10px 25px rgba(0,0,0,0.25);
+}
+
+/* Responsive (Mobile) */
+@media (max-width: 900px) {
+    .card-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 500px) {
+    .card-container {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+
+<div class="container">
+  <h2 class="title">📊 Admin Reports Dashboard</h2>
+
+  <div class="card-container">
+    <div class="card" onclick="window.location.href = '/admin_all_users'">
+      👥 All Users
+    </div>
+    <div
+      class="card"
+      onclick="window.location.href = '/interview_count'"
+    >
+      📊 Interview Count Per User
+    </div>
+
+    <div class="card" onclick="window.location.href = '/role_wise'">
+      💼 Role Wise
+    </div>
+
+    <div class="card" onclick="window.location.href = '/answer_quality'">
+      🧠 Answer Quality
+    </div>
+
+    <div class="card" onclick="window.location.href = '/type_priority'">
+      ⚡ Type Priority
+    </div>
+
+    <div class="card" onclick="window.location.href = '/role_priority'">
+      🏆 Role Priority
+    </div>
+
+    <div class="card" onclick="window.location.href = '/daily_report'">
+      📅 Daily Report
+    </div>
+
+    <div class="card" onclick="window.location.href = '/weekly_report'">
+      📆 Weekly Report
+    </div>
+
+    <div class="card" onclick="window.location.href = '/monthly_report'">
+      🗓️ Monthly Report
+    </div>
+
+    <div class="card" onclick="window.location.href = '/harder_section'">
+      🔥 Harder Section
+    </div>
+  </div>
+
+  {% endblock %}
+</div>

@@ -1,0 +1,9 @@
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #f4f6f9;
+}
+.profile-card {
+  max-width: 600px;
+  margin: auto;
+  margin-top: 100px;
+}

@@ -1,0 +1,54 @@
+{% extends 'base_without_navbar.html' %}
+
+{% block body %}
+<style>
+.title{
+    text-align:center;
+    margin-bottom:20px;
+    font-weight:bold;
+}
+</style>
+
+
+<div class="container">
+
+<h2 class="title">Role Difficulty Report</h2>
+
+<table class="table table-bordered table-striped">
+
+<thead>
+<tr>
+<th>Role</th>
+<th>Average Score</th>
+<th>Difficulty Level</th>
+</tr>
+</thead>
+
+<tbody>
+
+{% for row in data %}
+
+<tr>
+<td>{{ row.role }}</td>
+<td>{{ row.avg_score }}</td>
+<td>{{ row.level }}</td>
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+<button onclick="printReport()" class="btn btn-primary">
+🖨️ Download / Print Report
+</button>
+
+
+</div>
+<script>
+function printReport() {
+    window.print();
+}
+</script>
+
+{% endblock %}

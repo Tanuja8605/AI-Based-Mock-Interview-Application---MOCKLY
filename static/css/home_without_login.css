@@ -1,0 +1,134 @@
+/* startpage */
+body {
+  font-family: "Poppins", sans-serif;
+  background: #0f172a;
+  color: white;
+}
+.hero {
+  background: linear-gradient(to right, #1e293b, #0f172a);
+  color: white;
+  padding: 100px 0;
+}
+.hero h1 span {
+  color: #22c55e;
+}
+.card {
+  border-radius: 15px;
+}
+
+/* ABOUT_US PAGE_CSS */
+
+.page-header {
+  padding: 100px 0 60px;
+  background: linear-gradient(to right, #1e293b, #020617);
+}
+.feature-card {
+  background: #020617;
+  border-radius: 15px;
+  padding: 30px;
+  height: 100%;
+  transition: 0.3s;
+}
+.feature-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+.feature-icon {
+  font-size: 40px;
+  color: #22c55e;
+}
+
+/* working page */
+.header {
+  padding: 100px 0 60px;
+  background: linear-gradient(to right, #1e293b, #020617);
+}
+.step-card {
+  background: #020617;
+  border-radius: 16px;
+  padding: 30px;
+  height: 100%;
+  text-align: center;
+}
+.step-icon {
+  font-size: 42px;
+  color: #22c55e;
+}
+.step-number {
+  font-size: 14px;
+  letter-spacing: 1px;
+  color: #94a3b8;
+}
+
+/* LOGIN_CSSS_for_home_page */
+/* Modal background blur */
+.modal-backdrop.show {
+  backdrop-filter: blur(6px);
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+/* Modal content animation */
+.modal.fade .modal-dialog {
+  transform: scale(0.9);
+  opacity: 0;
+  transition: all 0.35s ease-in-out;
+}
+
+.modal.fade.show .modal-dialog {
+  transform: scale(1);
+  opacity: 1;
+}
+
+/* Modal card styling */
+.modal-content {
+  border-radius: 18px;
+  background: linear-gradient(145deg, #ffffff, #f3f6ff);
+}
+
+/* Header */
+.modal-title {
+  color: #1f2937;
+}
+
+/* Input focus animation */
+.form-control {
+  border-radius: 10px;
+  padding: 10px 14px;
+  transition: all 0.3s ease;
+}
+
+.form-control:focus {
+  border-color: #198754;
+  box-shadow: 0 0 0 0.2rem rgba(25, 135, 84, 0.25);
+}
+
+/* Login button hover */
+.btn-success {
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.btn-success:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(25, 135, 84, 0.35);
+}
+
+/* Close button hover */
+.btn-close {
+  transition: transform 0.3s ease;
+}
+
+.btn-close:hover {
+  transform: rotate(90deg) scale(1.1);
+}
+
+/* Register link */
+.modal-body a {
+  color: #198754;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.modal-body a:hover {
+  text-decoration: underline;
+}

@@ -1,0 +1,85 @@
+body {
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(to right, #0f172a, #1e293b);
+  color: white;
+  min-height: 100vh;
+  margin: 0;
+  padding: 20px;
+}
+
+/* Wrapper centers everything horizontally */
+.interview-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* horizontal center */
+  gap: 30px; /* space between avatars and controls */
+  margin-top: 50px; /* optional top spacing */
+}
+
+/* avatars side-by-side */
+.avatars-container {
+  display: flex;
+  gap: 40px; /* space between AI and User */
+  justify-content: center; /* center horizontally */
+}
+
+/* individual avatar card */
+.ai-section,
+.user-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #1e293b;
+  padding: 50px;
+  border-radius: 15px;
+  width: 500px;
+}
+
+.ai-avatar {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  border: 4px solid #22c55e;
+  object-fit: cover;
+}
+
+/* Controls horizontally centered under avatars */
+.controls-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.control-btn {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+}
+
+.mic-btn {
+  background: #374151;
+  color: white;
+}
+
+.end-btn {
+  background: #dc2626;
+  color: white;
+}
+
+.end-btn:hover {
+  background: #b91c1c;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .avatars-container {
+    flex-direction: column;
+    gap: 20px;
+  }
+}

@@ -1,0 +1,42 @@
+body {
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(to right, #0f172a, #1e293b);
+  color: white;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.countdown-container {
+  background: #1e293b;
+  padding: 40px;
+  border-radius: 20px;
+  text-align: center;
+  max-width: 500px;
+  width: 90%;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+h2 {
+  color: #22c55e;
+  font-weight: bold;
+}
+.timer {
+  font-size: 2.5rem;
+  margin: 20px 0;
+  font-weight: bold;
+}
+p {
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+.btn-join {
+  background: #22c55e;
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 10px;
+  font-size: 1.2rem;
+}
+.btn-join:hover {
+  background: #16a34a;
+}

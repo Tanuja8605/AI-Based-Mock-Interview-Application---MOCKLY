@@ -1,0 +1,98 @@
+{% extends 'base_without_navbar.html' %}
+
+{% block title %}Upcoming Interview{% endblock %}
+
+{% block body %}
+
+<div class="countdown-container mt-5">
+
+<h2 class="text-center mb-4">
+Upcoming Interviews for {{ user_name }}
+</h2>
+
+{% if interviews %}
+
+{% for interview in interviews %}
+
+<div class="card p-3 mb-4 shadow"
+     style="background-color:black;color:white;border-radius:10px">
+
+<p class="fw-bold">
+<strong>Role:</strong> {{ interview.role }}
+</p>
+
+<p class="fw-bold">
+<strong>Type:</strong> {{ interview.interview_type }}
+</p>
+
+<p class="fw-bold">
+<strong>Scheduled:</strong>
+{{ interview.date }} {{ interview.time }}
+</p>
+
+<!-- STATUS LOGIC -->
+
+{% if interview.status == "completed" %}
+
+<p class="fw-bold text-info">
+✅ Interview Completed
+</p>
+
+{% elif interview.status == "not completed" or interview.status == "missed" %}
+
+<p class="fw-bold text-danger">
+❌ Interview Not Completed / Missed
+</p>
+
+{% elif interview.status == "scheduled" and interview.can_join %}
+
+<p class="fw-bold text-success">
+✅ Your interview is ready to start!
+</p>
+
+<button class="btn btn-primary"
+onclick="joinInterview('{{ interview.id }}')">
+Join Interview
+</button>
+
+{% else %}
+
+<p class="text-warning">
+⏳ Join button will appear 5 minutes before interview.
+</p>
+
+{% endif %}
+
+</div>
+
+{% endfor %}
+
+{% else %}
+
+<p class="text-center text-muted">
+No upcoming interviews scheduled.
+</p>
+
+{% endif %}
+
+<div class="text-center mt-4">
+<a href="{{ url_for('schedule_page') }}"
+class="btn btn-success btn-lg">
+Go to home
+</a>
+</div>
+
+</div>
+
+<script>
+
+function joinInterview(interviewId){
+    // Safer Flask URL routing
+    window.location.href =
+    "{{ url_for('interview_conduct', interview_id=0) }}"
+    .replace("0", interviewId);
+}
+
+</script>
+
+{% endblock %}

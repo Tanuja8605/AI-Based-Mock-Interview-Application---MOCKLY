@@ -1,0 +1,53 @@
+body {
+  font-family: "Poppins", sans-serif;
+  background: #0f172a;
+  color: white;
+  min-height: 100vh;
+}
+.navbar-dark .navbar-brand,
+.navbar-dark .nav-link {
+  color: white;
+}
+.reports-container {
+  max-width: 1200px;
+  margin: 120px auto 50px auto;
+}
+.section-header {
+  margin-bottom: 30px;
+  text-align: center;
+}
+.section-header h2 {
+  color: #22c55e;
+}
+.card {
+  background: #111827;
+  border: none;
+  border-radius: 15px;
+}
+.card ul li {
+  color: white;
+}
+.card h5 {
+  color: white;
+}
+.table thead {
+  background: #1e293b;
+}
+.table tbody tr {
+  background: #1e293b;
+  color: white;
+}
+.chart-container {
+  background: #111827;
+  padding: 20px;
+  border-radius: 15px;
+  margin-bottom: 30px;
+}
+.btn-download {
+  background: #22c55e;
+  border: none;
+  color: white;
+}
+.btn-download:hover {
+  background: #16a34a;
+}
